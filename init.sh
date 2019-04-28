@@ -3,4 +3,4 @@ sudo rm -rf /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
 sudo ln -sf /home/box/web/etc/hello.py /etc/gunicorn.d/hello.py
 sudo /etc/init.d/gunicorn stop
-sudo /etc/init.d/gunicorn start -c /etc/gunicorn.d/hello.py 
+sudo gunicorn -c /etc/gunicorn.d/hello.py hello:wsgi_app
