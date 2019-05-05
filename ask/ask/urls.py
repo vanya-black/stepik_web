@@ -16,15 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from qa.views import main, popular, ask
+from qa.views import main, popular
 
 urlpatterns = [
 
     url(r'^$', main),
-    url(r'^ask/', ask),
     url(r'^popular/', popular),
-    url(r'^new/', found),
-    url(r'^admin/', admin.site.urls),
     url(r'^question/', include('qa.urls')),
     url(r'^', not_found),
 ]
