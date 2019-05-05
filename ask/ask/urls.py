@@ -20,7 +20,7 @@ from qa.views import main, popular, ask
 
 urlpatterns = [
 
-    url(r'^$', index),
+    url(r'^$', main),
     url(r'^ask/', ask),
     url(r'^popular/', popular),
     url(r'^new/', found),
