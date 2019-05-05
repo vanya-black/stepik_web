@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class QuestionManager(models.Manager): 
+    def new(self):
+        return self.order_by('-added_at')
+
+    def popular(self):
+        return self.order_by('-rating')
+
 class Question (models.Model):
     objects = QuestionManager() 
     title = models.CharField(max_length=255)
@@ -26,9 +33,4 @@ class Answer(models.Model):
     def __str__(self):
         return self.title
 
-class QuestionManager(models.Manager): 
-    def new(self):
-        return self.order_by('-added_at')
 
-    def popular(self):
-        return self.order_by('-rating')
