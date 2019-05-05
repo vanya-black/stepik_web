@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager): 
     def new(self):
-        return self.order_by('-added_at')
+        return self.all().order_by('-id')
 
     def popular(self):
-        return self.order_by('-rating')
+        return self.all().order_by('-rating')
 
 class Question (models.Model):
     objects = QuestionManager() 
@@ -23,6 +23,9 @@ class Question (models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_url(self):
+        return "/question/{}/".format(self.id)
 
 class Answer(models.Model):
     text = models.TextField()
