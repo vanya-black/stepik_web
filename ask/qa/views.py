@@ -14,7 +14,7 @@ def question(request, id):
 		q = Question.objects.get(id=id)
 	except Question.DoesNotExist:
 		raise Http404
-	return render(request, 'question.html', {'question': q, })
+	return render(request, 'question.html', {'question': q})
 
 def main(request):
 	questions = Question.objects.new()
