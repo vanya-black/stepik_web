@@ -22,6 +22,5 @@ urlpatterns = [
 
     url(r'^$', main),
     url(r'^popular/', popular),
-    url(r'^question/', include('qa.urls')),
-    url(r'^', not_found),
+    url(r'^question/', include('qa.urls'))
 ]
