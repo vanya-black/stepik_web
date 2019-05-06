@@ -23,6 +23,8 @@ def index(request):
         page = int(request.GET.get('page'))
     except ValueError:
         page = 1
+    except TypeError:
+    	page = 1
     paginator = Paginator(question, 10)
     try:
         page = paginator.page(page)
