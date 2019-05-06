@@ -25,9 +25,8 @@ def index(request):
         page = 1
     except TypeError:
     	page = 1
-    paginator = Paginator(question, 10)
+    paginator = Paginator(questions, 10)
     page = paginator.page(page)
-
     return render(request, 'main.html', {
         'Title' : 'Latest',
         'paginator' : paginator,
