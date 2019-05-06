@@ -29,4 +29,3 @@ urlpatterns = [
 
 
 ]
-© 2019 GitHub, Inc.
