@@ -21,6 +21,6 @@ from qa.views import index, popular
 urlpatterns = [
 
     path('/', index),
-    path('popular/', popular),
-    path('question/', include('qa.urls'))
+    path('/popular', popular),
+    path('/question', include('qa.urls'))
 ]
