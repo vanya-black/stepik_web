@@ -3,5 +3,5 @@ from qa.views import question
 
 urlpatterns = [
     ##url(r'^admin/', admin.site.urls),
-    url(r'^$', question)
+    path('/', question)
  ]

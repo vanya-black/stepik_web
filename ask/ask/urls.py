@@ -20,7 +20,7 @@ from qa.views import main, popular
 
 urlpatterns = [
 
-    url(r'^$', main),
-    url(r'^popular/', popular),
-    url(r'^question/', include('qa.urls'))
+    path('/', main),
+    path('popular/', popular),
+    path('question/', include('qa.urls'))
 ]
