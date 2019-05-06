@@ -1,4 +1,5 @@
-from django.conf.urls import url, path
+from django.conf.urls import url
+from django.urls path
 from qa.views import question
 
 urlpatterns = [
