@@ -16,7 +16,7 @@ def question(request, id):
 		raise Http404
 	return render(request, 'question.html', {'question': q})
 
-def main(request):
+def index(request):
 	questions = Question.objects.new()
 	try:
 		page = int(request.GET.get('page'))

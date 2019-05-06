@@ -16,11 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from qa.views import main, popular
+from qa.views import index, popular
 
 urlpatterns = [
 
-    path('/', main),
+    path('/', index),
     path('popular/', popular),
     path('question/', include('qa.urls'))
 ]
