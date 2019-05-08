@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator
 from qa.models import Question, Answer
+from qa.forms import AskForm, AnswerForm
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
@@ -14,10 +15,20 @@ def question(request, id):
         q = Question.objects.get(id=id)
     except Question.DoesNotExist:
         raise Http404
-    return render(request, 'question.html', {'question': q})
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid:
+            q = form.save()
+            url = q.get_url
+            return HttpResponseRedirect(url)
+    else:
+        form = AnswerForm(initial={'question' : q.id})
+    return render(request, 'question.html', {'question': q,
+                                             'form' : form})
     
 
-def index(request):
+def index(request):   
+
     questions = Question.objects.new()
     try:
         page = int(request.GET.get('page'))
@@ -49,5 +60,14 @@ def popular(request):
                    'questions': page.object_list,
                    'page': page, })
 
-
+def ask(request):
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            q = form.save()
+            url = q.get_url 
+            return HttpResponseRedirect(url)
+        else:
+            form = AskForm()
+        return render(request, '/ask.html', {'form' : form})
 
