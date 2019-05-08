@@ -63,10 +63,10 @@ def popular(request):
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
-        if form.is_valid():
-            q = form.save()
-            url = q.get_url 
-            return HttpResponseRedirect(url)
+        #if form.is_valid():
+        q = form.save()
+        url = q.get_url 
+        return HttpResponseRedirect(url)
     else:
         form = AskForm()
     return render(request, 'ask.html', {'form' : form})
