@@ -18,7 +18,7 @@ class Question (models.Model):
     text = models.TextField(default="")
     added_at = models.DateField(null=True)
     rating = models.IntegerField(default=0)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, default=1)
+    author = models.ForeignKey(User, default=1)
     likes = models.ManyToManyField(User, related_name="q_to_likes")
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Answer(models.Model):
     text = models.TextField(default="")
     added_at = models.DateField(null=True)
     question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, default=1)
 
     def __str__(self):
         return self.text
