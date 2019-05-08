@@ -69,5 +69,6 @@ def ask(request):
             return HttpResponseRedirect(url)
         else:
             form = AskForm(initial={'question' : q.id})
-        return render(request, 'ask.html', {'form' : form})
+        return render(request, 'ask.html', {'form' : form,
+            'question': q.id})
 
